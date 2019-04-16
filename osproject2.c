@@ -4,59 +4,66 @@
 void main()
 
 {
-  char p[10][5],temp[5];
-  int i,j,pt[10],wt[10],totwt=0,pr[10],temp1,n;
-  float avgwt;
+  char p_name[10][5],temp[5];
+  int i,j,bt[10],w[10],tw=0,prio[10],temp1,n_p;
+  float avgw;
  
-printf("enter no of processes:"); 
-scanf("%d",&n);
- for(i=0;i<n;i++)
+printf("enter no of processes:- "); 
+scanf("%d",&n_p);
+printf("==========================");
+ for(i=0;i<n_p;i++)
  {
-  printf("enter process%d name:",i+1);
-  scanf("%s",&p[i]);
+  printf("\nenter process%d name:- ",i+1);
+  scanf("%s",&p_name[i]);
   printf("enter Brust time:");
-  scanf("%d",&pt[i]);
+  scanf("%d",&bt[i]);
   printf("enter priority:");
-  scanf("%d",&pr[i]);
+  scanf("%d",&prio[i]);
+  printf("===========================");
  }
   
-for(i=0;i<n-1;i++)
+for(i=0;i<n_p-1;i++)
 {
- for(j=i+1;j<n;j++)
+ for(j=i+1;j<n_p;j++)
  {
-   if(pr[i]>pr[j])
+   if(prio[i]>prio[j])
   {
-   temp1=pr[i];
-   pr[i]=pr[j];
-   pr[j]=temp1;
-   temp1=pt[i];
-   pt[i]=pt[j];
-   pt[j]=temp1;
-   strcpy(temp,p[i]);
-   strcpy(p[i],p[j]);
-   strcpy(p[j],temp);
+   temp1=prio[i];
+   prio[i]=prio[j];
+   prio[j]=temp1;
+   temp1=bt[i];
+   bt[i]=bt[j];
+   bt[j]=temp1;
+   strcpy(temp,p_name[i]);
+   strcpy(p_name[i],p_name[j]);
+   strcpy(p_name[j],temp);
    }
   }
 }
   
-wt[0]=0;
-for(i=1;i<n;i++)
+w[0]=0;
+for(i=1;i<n_p;i++)
 {
- wt[i]=wt[i-1]+pt[i-1];
- totwt=totwt+wt[i];
+ w[i]=w[i-1]+bt[i-1];
+ tw=tw+w[i];
   }
    
-avgwt=(float)totwt/n;
-   
-printf("p_name\t p_time\t priority\t w_time\n");
+avgw=(float)tw/n_p;
+ printf("\n");
+ printf("\n========================================="); 
+printf("\np_name    p_time    priority    w_time\n");
     
-for(i=0;i<n;i++)
+for(i=0;i<n_p;i++)
     
 {
-   printf(" %s\t %d\t %d\t %d\n" ,p[i],pt[i],pr[i],wt[i]);
+   printf("  %s  ||    %d  ||   %d      ||    %d\n" ,p_name[i],bt[i],prio[i],w[i]);
    }
-  
- printf("total waiting time=%d\n avg waiting time=%f",totwt,avgwt);
+printf("=========================================\n");
+printf("\n**************************\n");
+ printf("|| total waiting time=%d ||\n",tw);
+printf("**************************\n");
+printf("\n**************************\n");
+ printf("|| avg waiting time=%f ||",avgw);
+printf("\n**************************\n");
    }
-
 
